@@ -1,18 +1,78 @@
 import SplitText from "./SplitText";
 import { useState } from "react";
+import { motion } from "motion/react";
 
 function Welcome() {
+    const [showWelcome, setShowWelcome] = useState(false);
     const [showLadies, setShowLadies] = useState(false);
-    const handleAnimationComplete = () => {
-        console.log("All letters have animated!");
-        setTimeout(() => {
-        setShowLadies(true);
-        },    300);
+
+    const icons= [
+        "bi-github",
+        "bi-code-slash",
+        "bi-steam",
+    ];
+
+    const containerVariants= {
+        hidden: {},
+        show: {
+            transition: {
+                staggerChildren: 0.15,
+            }
+        }
     };
+    
+    const iconsVariants= {
+        hidden: {
+            opacity: 0,
+            scale: 0,
+            y:30,
+        },
+        show: {
+            opacity:1,
+            scale:1,
+            y:0,
+            transition: {
+                duration:0.5,
+                ease:"backOut",
+            }
+        }
+    }
+
+    const handleIconsComplete= () => {
+        setTimeout(() => {
+            setShowWelcome(true);
+        }, 300);
+    }
+
+    const handleWelcomeComplete= () => {
+        setTimeout(() => {
+            setShowLadies(true);
+        }, 500);
+    };
+    
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center gap-1.5 bg-black">
+    <div className="h-screen flex flex-col items-center justify-center gap-1.5 bg-black -translate-y-20">
+        {/* Icons */}
+        <motion.div
+        className="flex gap-6 mb-4"
+        variants={containerVariants}
+        initial="hidden"
+        animate="show"
+        onAnimationComplete={handleIconsComplete}
+        >
+            {icons.map((icon, index)=> (
+                <motion.i 
+                key={index}
+                className={`bi ${icon} text-3xl text-white`}
+                variants={iconsVariants}
+                />
+            ))}
+        </motion.div>
+
+
            {/* WELCOME */}
+    {showWelcome && (
         <SplitText
             text="Welcome"
             className="text-6xl font-bold text-white"
@@ -25,8 +85,9 @@ function Welcome() {
             threshold={0.1}
             rootMargin="-100px"
             textAlign="center"
-            onLetterAnimationComplete={handleAnimationComplete}
+            onLetterAnimationComplete={handleWelcomeComplete}
         />
+        )}  
            {/* Ladies and gentlemen */}
         {showLadies && (
             <SplitText
@@ -46,6 +107,6 @@ function Welcome() {
         )}
     </div>
   );
-}
 
+}
 export default Welcome;
