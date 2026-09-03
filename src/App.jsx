@@ -1,10 +1,12 @@
-
+import { motion } from "motion/react"
+import "./components/App.css"
+import Welcome from "./components/welcome/welcome";
 
 function App() {
   
   return (
     <>
-    hola
+      <Welcome/>
     </>
   )
    
