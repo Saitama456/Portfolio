@@ -2,7 +2,7 @@ import SplitText from "./SplitText";
 import { useState } from "react";
 import { motion } from "motion/react";
 
-function Welcome() {
+function Welcome({ onComplete }) {
     const [showWelcome, setShowWelcome] = useState(false);
     const [showLadies, setShowLadies] = useState(false);
 
@@ -102,6 +102,11 @@ function Welcome() {
                 threshold={0.1}
                 rootMargin="-100px"
                 textAlign="center"
+                onLetterAnimationComplete={() => {
+                    setTimeout(() => {
+                        onComplete();
+                    }, 1000);
+                }}
         
             />
         )}

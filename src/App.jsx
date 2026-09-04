@@ -1,16 +1,38 @@
-import { motion } from "motion/react"
-import "./components/App.css"
+import { useState } from "react";
+import { AnimatePresence, motion } from "motion/react";
+
 import Welcome from "./components/welcome/welcome";
+import Navbar from "./components/Navbar/Navbar";
+import Hero from "./components/Hero/Hero";
 
 function App() {
-  
-  return (
-    <>
-      <Welcome/>
-    </>
-  )
-   
-  
+    const [showWelcome, setShowWelcome] = useState(true);
+
+    return (
+        <main>
+            <AnimatePresence>
+                {showWelcome && (
+                    <motion.div
+                        className="fixed inset-0 z-50"
+                        exit={{
+                            y: "-100%",
+                            transition: {
+                                duration: 1,
+                                ease: "easeInOut",
+                            },
+                        }}
+                    >
+                        <Welcome
+                            onComplete={() => setShowWelcome(false)}
+                        />
+                    </motion.div>
+                )}
+            </AnimatePresence>
+
+            <Navbar />
+            <Hero />
+        </main>
+    );
 }
 
-export default App
+export default App;
