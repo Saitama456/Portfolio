@@ -13,7 +13,7 @@ function App() {
             <AnimatePresence>
                 {showWelcome && (
                     <motion.div
-                        className="fixed inset-0 z-50"
+                        className="fixed inset-0 z-50 bg-black"
                         exit={{
                             y: "-100%",
                             transition: {

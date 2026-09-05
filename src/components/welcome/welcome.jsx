@@ -52,7 +52,7 @@ function Welcome({ onComplete }) {
     
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center gap-1.5 bg-black -translate-y-20">
+    <div className="h-screen flex flex-col items-center justify-center gap-1.5 bg-black">
         {/* Icons */}
         <motion.div
         className="flex gap-6 mb-4"
