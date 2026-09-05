@@ -17,7 +17,7 @@ function App() {
                         exit={{
                             y: "-100%",
                             transition: {
-                                duration: 1,
+                                duration: 0.8,
                                 ease: "easeInOut",
                             },
                         }}

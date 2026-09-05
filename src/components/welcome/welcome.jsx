@@ -59,7 +59,7 @@ function Welcome({ onComplete }) {
                 text="Welcome"
                 className="text-5xl font-normal text-white font-['Press_Start_2P']"
                 shuffleDirection="right"
-                duration={0.8}
+                duration={0.6}
                 animationMode="evenodd"
                 shuffleTimes={1}
                 ease="power3.out"
@@ -74,7 +74,7 @@ function Welcome({ onComplete }) {
                 text="Ladies and Gentlemen"
                 className="text-5xl font-normal text-white font-['Press_Start_2P']"
                 shuffleDirection="right"
-                duration={1}
+                duration={0.8}
                 animationMode="evenodd"
                 shuffleTimes={1}
                 ease="power3.out"
