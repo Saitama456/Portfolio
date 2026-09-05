@@ -1,117 +1,96 @@
-import SplitText from "./SplitText";
-import { useState } from "react";
+import Shuffle from "./Shuffle";
 import { motion } from "motion/react";
 
 function Welcome({ onComplete }) {
-    const [showWelcome, setShowWelcome] = useState(false);
-    const [showLadies, setShowLadies] = useState(false);
 
-    const icons= [
+    const icons = [
         "bi-github",
         "bi-code-slash",
         "bi-steam",
     ];
 
-    const containerVariants= {
+    const containerVariants = {
         hidden: {},
         show: {
             transition: {
-                staggerChildren: 0.15,
+                staggerChildren: 0,
             }
         }
     };
-    
-    const iconsVariants= {
+
+    const iconsVariants = {
         hidden: {
             opacity: 0,
             scale: 0,
-            y:30,
+            y: 30,
         },
         show: {
-            opacity:1,
-            scale:1,
-            y:0,
+            opacity: 1,
+            scale: 1,
+            y: 0,
             transition: {
-                duration:0.5,
-                ease:"backOut",
+                duration: 0.5,
+                ease: "backOut",
             }
         }
-    }
-
-    const handleIconsComplete= () => {
-        setTimeout(() => {
-            setShowWelcome(true);
-        }, 300);
-    }
-
-    const handleWelcomeComplete= () => {
-        setTimeout(() => {
-            setShowLadies(true);
-        }, 500);
     };
-    
 
-  return (
-    <div className="h-screen flex flex-col items-center justify-center gap-1.5 bg-black">
-        {/* Icons */}
-        <motion.div
-        className="flex gap-6 mb-4"
-        variants={containerVariants}
-        initial="hidden"
-        animate="show"
-        onAnimationComplete={handleIconsComplete}
-        >
-            {icons.map((icon, index)=> (
-                <motion.i 
-                key={index}
-                className={`bi ${icon} text-3xl text-white`}
-                variants={iconsVariants}
-                />
-            ))}
-        </motion.div>
+    return (
+        <div className="h-screen flex flex-col items-center justify-center gap-1.5 bg-black font-['Press_Start_2P']">
 
+            {/* ICONS */}
+            <motion.div
+                className="flex gap-6 mb-4"
+                variants={containerVariants}
+                initial="hidden"
+                animate="show"
+            >
+                {icons.map((icon, index) => (
+                    <motion.i
+                        key={index}
+                        className={`bi ${icon} text-3xl text-white`}
+                        variants={iconsVariants}
+                    />
+                ))}
+            </motion.div>
 
-           {/* WELCOME */}
-    {showWelcome && (
-        <SplitText
-            text="Welcome"
-            className="text-6xl font-bold text-white"
-            delay={60}
-            duration={0.8}
-            ease="back.out(1.7)"
-            splitType="chars"
-            from={{ opacity: 0, y: 120, scale: 0.6, rotate: -10 }}
-            to={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
-            threshold={0.1}
-            rootMargin="-100px"
-            textAlign="center"
-            onLetterAnimationComplete={handleWelcomeComplete}
-        />
-        )}  
-           {/* Ladies and gentlemen */}
-        {showLadies && (
-            <SplitText
-                text="Ladies and Gentlemen"
-                className="text-6xl font-bold text-white"
-                delay={70}
-                duration={1}
-                ease="back.out(1.7)"
-                splitType="chars"
-                from={{ opacity: 0, y: 120, scale: 0.6, rotate: -10 }}
-                to={{ opacity: 1, y: 0, scale: 1, rotate: 0 }}
+            {/* WELCOME */}
+            <Shuffle
+                text="Welcome"
+                className="text-5xl font-normal text-white font-['Press_Start_2P']"
+                shuffleDirection="right"
+                duration={0.8}
+                animationMode="evenodd"
+                shuffleTimes={1}
+                ease="power3.out"
+                stagger={0}
                 threshold={0.1}
-                rootMargin="-100px"
-                textAlign="center"
-                onLetterAnimationComplete={() => {
+                triggerOnce={true}
+                triggerOnHover={false}
+            />
+
+            {/* LADIES AND GENTLEMEN */}
+            <Shuffle
+                text="Ladies and Gentlemen"
+                className="text-5xl font-normal text-white font-['Press_Start_2P']"
+                shuffleDirection="right"
+                duration={1}
+                animationMode="evenodd"
+                shuffleTimes={1}
+                ease="power3.out"
+                stagger={0}
+                threshold={0.1}
+                triggerOnce={true}
+                triggerOnHover={false}
+                onShuffleComplete={() => {
                     setTimeout(() => {
                         onComplete();
-                    }, 1000);
+                    }, 1500);
                 }}
-        
             />
-        )}
-    </div>
-  );
 
+        </div>
+    );
 }
+
 export default Welcome;
