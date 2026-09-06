@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "motion/react";
 
 
 const Navbar = () => {
@@ -6,7 +7,16 @@ const Navbar = () => {
   const [activate, setActivate] = useState("Home");
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
+    <motion.div 
+    className="fixed top-0 left-0 right-0 z-50 px-4 pt-4"
+      initial={{ opacity: 0, y: 40 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{
+        type: "spring",
+        stiffness: 300,
+        damping: 15,
+        delay: 0.3,
+      }}>
       <nav className="relative flex items-center justify-between px-6 py-3 border border-white/10 rounded-full bg-black/30 backdrop-blur-md">
         <div className="border border-white/20 rounded-full px-4 py-1.5">
           <span className="font-['Press_Start_2P'] text-xs text-white">
@@ -32,7 +42,7 @@ const Navbar = () => {
           ))}
         </ul>
       </nav>
-    </div>
+    </motion.div>
   );
 };
 
