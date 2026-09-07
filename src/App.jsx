@@ -30,7 +30,8 @@ function App() {
             </AnimatePresence>
 
             {!showWelcome && <Navbar />}
-            <Hero />
+
+           {!showWelcome && <Hero />}
         </main>
     );
 }
