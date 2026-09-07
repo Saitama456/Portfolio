@@ -73,6 +73,8 @@ function Hero() {
           <div className="flex justify-center">
             <ProfileCard
               avatarUrl={perfilImg}
+              innerGradient="linear-gradient(145deg,#2a2a2a8c 0%,#4a4a4a44 100%)"
+              behindGlowColor="rgba(120, 120, 120, 0.5)"
               name="Andrez Suarez"
               title="Frontend Developer"
               handle="Az.dev"
