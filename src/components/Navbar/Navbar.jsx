@@ -3,7 +3,7 @@ import { motion } from "motion/react";
 
 
 const Navbar = () => {
-  const links = ["Home", "About", "Portfolio"];
+  const links = ["Home", "About", "Portfolio", "Contact"];
   const [activate, setActivate] = useState("Home");
 
   return (
