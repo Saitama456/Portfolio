@@ -1,8 +1,10 @@
 import CRTWarp from "../background.jsx/CRTWarp";
+import ProfileCard from "../ProfileCard/ProfileCard";
+import perfilImg from "../../assets/images/perfil.jpeg";
 
 function Hero() {
   return (
-    <section className="relative h-screen w-full overflow-hidden">
+    <section className="relative min-h-screen w-full overflow-hidden">
       {/* Fondo */}
       <div className="absolute inset-0 z-0">
         <CRTWarp
@@ -30,9 +32,59 @@ function Hero() {
       </div>
 
       {/* Contenido encima del fondo */}
-      <div className="relative z-10 h-full flex flex-col items-center justify-center text-white">
-        <h1 className="text-5xl font-bold">Tu nombre / título</h1>
-        <p className="mt-4 text-lg">Descripción corta</p>
+      <div className="relative z-10 min-h-screen w-full flex items-center px-8 md:px-20 pt-32">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+          {/* Columna izquierda: texto */}
+          <div className="flex flex-col gap-6">
+            <span className="text-sm text-white/50 font-['Press_Start_2P']">
+              ● AVAILABLE FOR WORK
+            </span>
+
+            <h1 className="text-5xl md:text-6xl font-bold text-white leading-tight">
+              Frontend
+              <br />
+              Developer
+            </h1>
+
+            <p className="text-sm text-white/40 font-['Press_Start_2P']">
+              Fresh Graduate
+            </p>
+
+            <p className="text-white/70 max-w-md">
+              Creando sitios web modernos con un diseño limpio, responsivo y
+              elegante. Transformando ideas en experiencias digitales
+              atractivas y fáciles de usar.
+            </p>
+
+            <div className="flex gap-3">
+              <span className="border border-white/20 rounded-full px-4 py-1 text-xs text-white/70">
+                TypeScript
+              </span>
+              <span className="border border-white/20 rounded-full px-4 py-1 text-xs text-white/70">
+                React.js
+              </span>
+              <span className="border border-white/20 rounded-full px-4 py-1 text-xs text-white/70">
+                Tailwind
+              </span>
+            </div>
+          </div>
+
+          {/* Columna derecha: ProfileCard */}
+          <div className="flex justify-center">
+            <ProfileCard
+              avatarUrl={perfilImg}
+              name="Andrez Suarez"
+              title="Frontend Developer"
+              handle="Az.dev"
+              status="Online"
+              contactText="Contact"
+              showUserInfo={true}
+              behindGlowEnabled={true}
+              enableTilt={true}
+              onContactClick={() => console.log("contacto clickeado")}
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
