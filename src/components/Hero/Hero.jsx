@@ -1,4 +1,4 @@
-import CRTWarp from "../background.jsx/CRTWarp";
+
 import ProfileCard from "../ProfileCard/ProfileCard";
 import perfilImg from "../../assets/images/perfil.jpeg";
 import pokeballPattern from "../../assets/images/pokeball-pattern.svg";
@@ -8,31 +8,6 @@ function Hero() {
   
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
-      {/* Fondo */}
-      <div className="absolute inset-0 z-0">
-        <CRTWarp
-          color="#808080"
-          backgroundColor="#0a0a0a"
-          speed={0.5}
-          curvature={0.25}
-          scanlineStrength={0.25}
-          scanlineFrequency={200}
-          waveAmplitude={0.3}
-          waveFrequency={2.5}
-          bloom={1.5}
-          bloomRadius={1}
-          noise={0.1}
-          vignette={0}
-          brightness={1.25}
-          pixelation={1}
-          rgbShift={0.015}
-          mouseReact
-          mouseStrength={0.5}
-          dpr={1}
-          fps={30}
-          paused={false}
-        />
-      </div>
 
       {/* Contenido encima del fondo, con animación de entrada */}
       <motion.div

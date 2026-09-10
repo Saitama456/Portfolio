@@ -5,39 +5,61 @@ import Welcome from "./components/welcome/welcome";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import About from "./components/About/about";
-
+import CRTWarp from "./components/background.jsx/CRTWarp";
 
 function App() {
     const [showWelcome, setShowWelcome] = useState(true);
 
     return (
-        <main>
+        <main className="relative">
+            {/* Fondo único, solo visible después del Welcome */}
+            {!showWelcome && (
+                <div className="fixed inset-0 z-0">
+                    <CRTWarp
+                        color="#808080"
+                        backgroundColor="#0a0a0a"
+                        speed={0.5}
+                        curvature={0.25}
+                        scanlineStrength={0.25}
+                        scanlineFrequency={200}
+                        waveAmplitude={0.3}
+                        waveFrequency={2.5}
+                        bloom={1.5}
+                        bloomRadius={1}
+                        noise={0.1}
+                        vignette={0}
+                        brightness={1.25}
+                        pixelation={1}
+                        rgbShift={0.015}
+                        mouseReact
+                        mouseStrength={0.5}
+                        dpr={1}
+                        fps={30}
+                        paused={false}
+                    />
+                </div>
+            )}
+
             <AnimatePresence>
                 {showWelcome && (
                     <motion.div
                         className="fixed inset-0 z-50 bg-black"
                         exit={{
                             y: "-100%",
-                            transition: {
-                                duration: 0.8,
-                                ease: "easeInOut",
-                            },
+                            transition: { duration: 0.8, ease: "easeInOut" },
                         }}
                     >
-                        <Welcome
-                            onComplete={() => setShowWelcome(false)}
-                        />
+                        <Welcome onComplete={() => setShowWelcome(false)} />
                     </motion.div>
                 )}
             </AnimatePresence>
 
             {!showWelcome && <Navbar />}
 
-           {!showWelcome && <Hero />}
-
-           <About/>
-
-           
+            <div className="relative z-10">
+                <Hero />
+                <About />
+            </div>
         </main>
     );
 }

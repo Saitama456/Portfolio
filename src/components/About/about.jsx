@@ -1,34 +1,10 @@
-import CRTWarp from "../background.jsx/CRTWarp";
+
 import perfilImg from "../../assets/images/perfil.jpeg";
 
 function About() {
   return (
     <section className="relative min-h-screen w-full overflow-hidden">
-      {/* Fondo */}
-      <div className="absolute inset-0 z-0">
-        <CRTWarp
-          color="#808080"
-          backgroundColor="#0a0a0a"
-          speed={0.5}
-          curvature={0.25}
-          scanlineStrength={0.25}
-          scanlineFrequency={200}
-          waveAmplitude={0.3}
-          waveFrequency={2.5}
-          bloom={1.5}
-          bloomRadius={1}
-          noise={0.1}
-          vignette={0}
-          brightness={1.25}
-          pixelation={1}
-          rgbShift={0.015}
-          mouseReact
-          mouseStrength={0.5}
-          dpr={1}
-          fps={30}
-          paused={false}
-        />
-      </div>
+      
 
       {/* Contenido */}
       <div className="relative z-10 min-h-screen w-full flex items-center px-8 md:px-20">
@@ -59,7 +35,7 @@ function About() {
 
             <div className="flex gap-4 mt-2">
               <button className="flex items-center gap-2 bg-white text-black font-semibold text-sm px-5 py-3 rounded-lg hover:bg-white/90 transition-colors">
-                📄 Download CV
+                 Download CV
               </button>
               <button className="flex items-center gap-2 border border-white/20 text-white text-sm px-5 py-3 rounded-lg hover:border-white/40 transition-colors">
                 ↗ View Projects
