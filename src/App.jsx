@@ -4,6 +4,8 @@ import { AnimatePresence, motion } from "motion/react";
 import Welcome from "./components/welcome/welcome";
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
+import About from "./components/About/about";
+
 
 function App() {
     const [showWelcome, setShowWelcome] = useState(true);
@@ -32,6 +34,10 @@ function App() {
             {!showWelcome && <Navbar />}
 
            {!showWelcome && <Hero />}
+
+           <About/>
+
+           
         </main>
     );
 }
