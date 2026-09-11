@@ -1,5 +1,6 @@
 
 import perfilImg from "../../assets/images/perfil.jpeg";
+import { motion } from "motion/react";
 
 function About() {
   return (
@@ -34,13 +35,21 @@ function About() {
             </blockquote>
 
             <div className="flex gap-4 mt-2">
-              <button className="flex items-center gap-2 bg-white text-black font-semibold text-sm px-5 py-3 rounded-lg hover:bg-white/90 transition-colors">
-                 Download CV
-              </button>
-              <button className="flex items-center gap-2 border border-white/20 text-white text-sm px-5 py-3 rounded-lg hover:border-white/40 transition-colors">
-                ↗ View Projects
-              </button>
-            </div>
+                <a
+                    href="/cv.pdf"
+                    download="ANDRES.pdf"
+                    className="flex items-center gap-2 bg-white text-black font-semibold text-sm px-5 py-3 rounded-lg hover:bg-white/90 transition-colors"
+                >
+                    Download CV
+                </a>
+
+                <a
+                    href="#portfolio"
+                    className="flex items-center gap-2 border border-white/20 text-white text-sm px-5 py-3 rounded-lg hover:border-white/40 transition-colors"
+                >
+                    ↗ View Projects
+                </a>
+            </div>   
           </div>
 
           {/* Columna derecha: foto circular */}
