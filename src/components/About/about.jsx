@@ -4,7 +4,7 @@ import AnimatedLink from "../ui/AnimatedLink";
 
 function About() {
   return (
-    <section className="relative min-h-screen w-full overflow-hidden">
+    <section  id="about"  className="relative min-h-screen w-full overflow-hidden">
       
 
       {/* Contenido */}

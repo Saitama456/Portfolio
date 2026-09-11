@@ -7,7 +7,7 @@ import { motion } from "motion/react";
 function Hero() {
   
   return (
-    <section className="relative min-h-screen w-full overflow-hidden">
+    <section  id="home"  className="relative min-h-screen w-full overflow-hidden">
 
       {/* Contenido encima del fondo, con animación de entrada */}
       <motion.div
