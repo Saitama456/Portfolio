@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
 
 import Welcome from "./components/welcome/welcome";
@@ -9,6 +9,18 @@ import CRTWarp from "./components/background.jsx/CRTWarp";
 
 function App() {
     const [showWelcome, setShowWelcome] = useState(true);
+
+    useEffect(() => {
+        if ("scrollRestoration" in window.history) {
+            window.history.scrollRestoration = "manual";
+        }
+        window.scrollTo(0, 0);
+    }, []);
+
+    const handleWelcomeComplete = () => {
+        window.scrollTo(0, 0);
+        setShowWelcome(false);
+    };
 
     return (
         <main className="relative">
@@ -49,7 +61,7 @@ function App() {
                             transition: { duration: 0.8, ease: "easeInOut" },
                         }}
                     >
-                        <Welcome onComplete={() => setShowWelcome(false)} />
+                        <Welcome onComplete={handleWelcomeComplete} />
                     </motion.div>
                 )}
             </AnimatePresence>

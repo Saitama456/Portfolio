@@ -2,6 +2,7 @@
 import perfilImg from "../../assets/images/perfil.jpeg";
 import AnimatedLink from "../ui/AnimatedLink";
 
+
 function About() {
   return (
     <section  id="about"  className="relative min-h-screen w-full overflow-hidden">
@@ -49,9 +50,17 @@ function About() {
                 >
                     ↗ View Projects
                 </AnimatedLink>
-            </div>   
+            </div>
+            <AnimatedLink
+            href="#certificates"
+            className="flex items-center justify-between gap-2 border border-white/10 bg-white/5 text-white/80 text-sm px-5 py-3 rounded-lg hover:border-white/30 transition-colors w-full max-w-md"
+            >
+                <span className="flex items-center gap-2">
+                    <i class="bi bi-award"></i> Certificados
+                </span>
+                <span>↗</span>
+            </AnimatedLink>
           </div>
-
           {/* Columna derecha: foto circular */}
           <div className="flex justify-center md:justify-end">
             <div className="w-72 h-72 md:w-96 md:h-96 rounded-full overflow-hidden border border-white/10">
