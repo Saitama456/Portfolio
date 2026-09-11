@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "motion/react";
+import { scrollToSection } from "../../utils/smoothScroll";
 
 
 const Navbar = () => {
@@ -29,7 +30,11 @@ const Navbar = () => {
             <li key={link}>
               
               <a href={`#${link.toLowerCase()}`}
-                onClick={() => setActivate(link)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActivate(link);
+                  scrollToSection(link.toLocaleLowerCase(), 100, 900);
+                }}
                 className={`font-['Press_Start_2P'] text-xs pb-1 border-b-2 transition-colors ${
                   activate === link
                     ? "text-white border-white"
