@@ -1,6 +1,6 @@
 
 import perfilImg from "../../assets/images/perfil.jpeg";
-import { motion } from "motion/react";
+import AnimatedLink from "../ui/AnimatedLink";
 
 function About() {
   return (
@@ -35,20 +35,20 @@ function About() {
             </blockquote>
 
             <div className="flex gap-4 mt-2">
-                <a
+                <AnimatedLink
                     href="/cv.pdf"
                     download="ANDRES.pdf"
                     className="flex items-center gap-2 bg-white text-black font-semibold text-sm px-5 py-3 rounded-lg hover:bg-white/90 transition-colors"
                 >
                     Download CV
-                </a>
+                </AnimatedLink>
 
-                <a
+                <AnimatedLink
                     href="#portfolio"
                     className="flex items-center gap-2 border border-white/20 text-white text-sm px-5 py-3 rounded-lg hover:border-white/40 transition-colors"
                 >
                     ↗ View Projects
-                </a>
+                </AnimatedLink>
             </div>   
           </div>
 
