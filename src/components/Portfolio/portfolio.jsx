@@ -1,5 +1,8 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
+import redesPreview from "../../assets/images/redes-cisco-preview.png";
+import hardwarePreview from "../../assets/images/hardware-cisco-preview.png";
+
 
 const tabs = ["Projects", "Certificates", "Tech Stack"];
 
@@ -7,13 +10,30 @@ const projects = [
   {
     title: "Project Portfolio",
     description: "Portfolio es una colección de documentos, trabajos y proyectos.",
-    image: null, // aquí pondrás la imagen/preview del proyecto
+    image: null,
   },
-  // agrega más proyectos aquí
+];
+
+const certificates = [
+  {
+    title: "Conceptos básicos de redes",
+    issuer: "Cisco Networking Academy",
+    date: "27 Feb 2025",
+    file: "/certificates/Redes_certificado.pdf",
+    preview: redesPreview,
+  },
+  {
+    title: "Conceptos Básicos de Hardware de Computadora",
+    issuer: "Cisco Networking Academy",
+    date: "13 May 2025",
+    file: "/certificates/Computer_Hardware_Basics.pdf",
+    preview: hardwarePreview
+  },
 ];
 
 function Portfolio() {
   const [activeTab, setActiveTab] = useState("Projects");
+  const [selectedCert, setSelectedCert] = useState(null);
 
   return (
     <section
@@ -27,7 +47,6 @@ function Portfolio() {
         viewport={{ once: true, amount: 0.3 }}
         transition={{ type: "spring", stiffness: 300, damping: 15 }}
       >
-        {/* Título */}
         <h2 className="text-4xl md:text-5xl font-bold text-white text-center">
           Portfolio Showcase
         </h2>
@@ -59,7 +78,6 @@ function Portfolio() {
           ))}
         </div>
 
-        {/* Contenido según pestaña activa */}
         <div className="w-full max-w-6xl mt-12">
           <AnimatePresence mode="wait">
             {activeTab === "Projects" && (
@@ -107,9 +125,27 @@ function Portfolio() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="text-white/50 text-center py-10"
+                className="grid grid-cols-1 md:grid-cols-2 gap-6"
               >
-                Aquí van tus certificados
+                {certificates.map((cert, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setSelectedCert(cert)}
+                    className="text-left border border-white/10 rounded-2xl p-6 bg-white/5 hover:border-white/30 transition-colors flex items-center gap-4"
+                  >
+                    <div className="w-14 h-14 rounded-xl bg-white/10 flex items-center justify-center text-2xl">
+                      🏅
+                    </div>
+                    <div>
+                      <h3 className="text-white font-semibold text-base">
+                        {cert.title}
+                      </h3>
+                      <p className="text-white/50 text-sm mt-1">
+                        {cert.issuer} · {cert.date}
+                      </p>
+                    </div>
+                  </button>
+                ))}
               </motion.div>
             )}
 
@@ -128,6 +164,40 @@ function Portfolio() {
           </AnimatePresence>
         </div>
       </motion.div>
+
+      {/* Modal del certificado */}
+      <AnimatePresence>
+        {selectedCert && (
+          <motion.div
+            className="fixed inset-0 z-100 bg-black/80 flex items-center justify-center p-6"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedCert(null)}
+          >
+            <motion.div
+              className="bg-white rounded-xl overflow-hidden w-full max-w-4xl h-[85vh] relative"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setSelectedCert(null)}
+                className="absolute top-3 right-3 z-10 bg-black/70 text-white w-9 h-9 rounded-full flex items-center justify-center hover:bg-black transition-colors"
+              >
+                ✕
+              </button>
+              <iframe
+                src={selectedCert.file}
+                title={selectedCert.title}
+                className="w-full h-full"
+              />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
