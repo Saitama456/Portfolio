@@ -6,6 +6,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";
 import About from "./components/About/about";
 import Portfolio from "./components/Portfolio/Portfolio";
+import Contact from "./components/Contact/Contact";
 import CRTWarp from "./components/background.jsx/CRTWarp";
 
 function App() {
@@ -73,6 +74,7 @@ function App() {
                 <Hero />
                 <About />
                 <Portfolio />
+                <Contact />
             </div>
         </main>
     );
