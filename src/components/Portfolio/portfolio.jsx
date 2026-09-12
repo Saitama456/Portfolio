@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import redesPreview from "../../assets/images/redes-cisco-preview.png";
-import hardwarePreview from "../../assets/images/hardware-cisco-preview.png";
+import redesPreview from "../../assets/images/redes-cisco.png";
+import hardwarePreview from "../../assets/images/hardware-cisco.png";
 
 
 const tabs = ["Projects", "Certificates", "Tech Stack"];
@@ -131,10 +131,13 @@ function Portfolio() {
                   <button
                     key={index}
                     onClick={() => setSelectedCert(cert)}
-                    className="text-left border border-white/10 rounded-2xl p-6 bg-white/5 hover:border-white/30 transition-colors flex items-center gap-4"
+                    className="text-left group"
                   >
-                    <div className="w-14 h-14 rounded-xl bg-white/10 flex items-center justify-center text-2xl">
-                      🏅
+                    <div className="rounded-2xl overflow-hidden border border-white/10 bg-white/5 group-hover:border-white/30 transition-colors aspect-4/3">
+                      <img
+                      src={cert.preview}
+                      alt={cert.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>
                     </div>
                     <div>
                       <h3 className="text-white font-semibold text-base">
