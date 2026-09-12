@@ -29,8 +29,8 @@ function App() {
             {!showWelcome && (
                 <div className="fixed inset-0 z-0">
                     <CRTWarp
-                        color="#808080"
-                        backgroundColor="#0a0a0a"
+                        color="#3b82f6"
+                        backgroundColor="#050814"
                         speed={0.5}
                         curvature={0.25}
                         scanlineStrength={0.25}
