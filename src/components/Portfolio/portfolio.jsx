@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import redesPreview from "../../assets/images/redes-cisco.png";
 import hardwarePreview from "../../assets/images/hardware-cisco.png";
@@ -34,6 +34,17 @@ const certificates = [
 function Portfolio() {
   const [activeTab, setActiveTab] = useState("Projects");
   const [selectedCert, setSelectedCert] = useState(null);
+
+  useEffect(()=> {
+      const handler = () => setActiveTab("Certificates");
+      const handleProjects = () => setActiveTab("Projects");
+      window.addEventListener("open-certificates-tab", handler);
+      window.addEventListener("open-projects-tab", handleProjects);
+      return () => {
+        window.removeEventListener("open-certificates-tab", handler);
+        window.removeEventListener("open-projects-tab", handleProjects);
+      };
+   }, []);
 
   return (
     <section
