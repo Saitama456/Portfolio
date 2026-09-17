@@ -31,6 +31,15 @@ const certificates = [
   },
 ];
 
+const techStack = [
+  { name: "React.Js", icon: "devicon-react-original colored" },
+  { name: "JavaScript", icon: "devicon-javascript-plain colored" },
+  { name: "CSS", icon: "devicon-css3-plain colored" },
+  { name: "Tailwind", icon: "devicon-tailwindcss-plain colored" },
+  { name: "HTML", icon: "devicon-html5-plain colored" },
+  { name: "Python", icon: "devicon-python-plain colored" },
+];
+
 function Portfolio() {
   const [activeTab, setActiveTab] = useState("Projects");
   const [selectedCert, setSelectedCert] = useState(null);
@@ -170,9 +179,17 @@ function Portfolio() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="text-white/50 text-center py-10"
+                className="grid grid-cols-3 md:grid-cols-6 gap-4 justify-items-center"
               >
-                Aquí va tu stack tecnológico
+                {techStack.map (({name, icon})=> (
+                  <div
+                  key={name}
+                  className="flex flex-col items-center justify-center gap-2 w-24 h-24 md:w-28 md:h-28 bg-white/5 border border-white/10 rounded-2xl hover:border-white/30 hover:bg-white/10 transition-colors"
+                  >
+                    <i className={`${icon} text-3xl md:text-4xl`}></i>
+                    <span className="ext-xs text-white/60 text-center">{name}</span>
+                  </div>
+                ))}
               </motion.div>
             )}
           </AnimatePresence>

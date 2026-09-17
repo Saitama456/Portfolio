@@ -75,7 +75,7 @@ function About() {
 
               <AnimatedLink
                 href="#portfolio"
-                  onClick={(e) => {
+                onClick={(e) => {
                 e.preventDefault();
                 window.dispatchEvent(new CustomEvent("open-projects-tab"));
                 scrollToSection("portfolio", 100, 900);
