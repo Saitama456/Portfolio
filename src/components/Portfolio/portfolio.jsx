@@ -9,8 +9,17 @@ const tabs = ["Projects", "Certificates", "Tech Stack"];
 const projects = [
   {
     title: "Project Portfolio",
-    description: "Portfolio es una colección de documentos, trabajos y proyectos.",
+    description:
+      "Portfolio es una colección de documentos, trabajos, proyectos, o logros que muestran las habilidades, experiencia y calidad del trabajo de alguien en un área específica. Sirve como evidencia real (no solo afirmaciones) al postularse a un trabajo, beca, o proyecto.",
     image: null,
+    liveLink: null,
+    codeLink: null,
+    technologies: ["React.js", "Tailwind", "Motion"],
+    keyFeatures: [
+      "Website full animación",
+      "Diseño moderno y elegante",
+      "Sección de proyectos, certificados y stack tecnológico",
+    ],
   },
 ];
 
@@ -43,6 +52,7 @@ const techStack = [
 function Portfolio() {
   const [activeTab, setActiveTab] = useState("Projects");
   const [selectedCert, setSelectedCert] = useState(null);
+  const [selectedProject, setSelectedProject] = useState(null);
 
   useEffect(()=> {
       const handler = () => setActiveTab("Certificates");
@@ -132,6 +142,12 @@ function Portfolio() {
                       <p className="text-white/50 text-sm mt-2 leading-relaxed">
                         {project.description}
                       </p>
+                      <button
+                        onClick={()=> setSelectedProject(project)}
+                        className="mt-4 flex items-center gap-2 text-white/70 text-sm font-medium hover:text-white transition-colors"
+                        >
+                          Details <span>↗</span>
+                        </button>
                     </div>
                   </div>
                 ))}
@@ -228,6 +244,10 @@ function Portfolio() {
             </motion.div>
           </motion.div>
         )}
+      </AnimatePresence>
+      {/* detalles del proyecto */}
+      <AnimatePresence>
+        
       </AnimatePresence>
     </section>
   );
