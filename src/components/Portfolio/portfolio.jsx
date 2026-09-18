@@ -245,9 +245,151 @@ function Portfolio() {
           </motion.div>
         )}
       </AnimatePresence>
-      {/* detalles del proyecto */}
+
+      {/* Modal de detalles del proyecto */}
       <AnimatePresence>
-        
+        {selectedProject && (
+          <motion.div
+            className="fixed inset-0 z-100 bg-black/80 flex items-center justify-center p-6 overflow-y-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedProject(null)}
+          >
+            <motion.div
+              className="bg-[#0d0d0d] border border-white/10 rounded-2xl overflow-hidden w-full max-w-4xl max-h-[90vh] overflow-y-auto relative"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              transition={{ type: "spring", stiffness: 300, damping: 25 }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="p-8">
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="flex items-center gap-2 text-white/60 text-sm mb-6 hover:text-white transition-colors"
+                >
+                  ← Back
+                </button>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                  <div>
+                    <h2 className="text-3xl font-bold text-white">
+                      {selectedProject.title}
+                    </h2>
+                    <div className="w-10 h-1 bg-white/30 rounded-full mt-3 mb-4" />
+
+                    <p className="text-white/60 text-sm leading-relaxed">
+                      {selectedProject.description}
+                    </p>
+
+                    <div className="flex gap-3 mt-6">
+                      <div className="flex items-center gap-2 border border-white/10 rounded-lg px-4 py-3">
+                        <i className="bi bi-code-slash text-white/60"></i>
+                        <div>
+                          <p className="text-white font-semibold text-sm">
+                            {selectedProject.technologies.length}
+                          </p>
+                          <p className="text-white/40 text-xs">
+                            Technologies Used
+                          </p>
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-2 border border-white/10 rounded-lg px-4 py-3">
+                        <i className="bi bi-layers text-white/60"></i>
+                        <div>
+                          <p className="text-white font-semibold text-sm">
+                            {selectedProject.keyFeatures.length}
+                          </p>
+                          <p className="text-white/40 text-xs">
+                            Key Features
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-3 mt-4">
+                      {selectedProject.liveLink ? (
+                        <a
+                          href={selectedProject.liveLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 border border-white/10 text-white/70 text-sm px-4 py-2 rounded-lg hover:border-white/30 transition-colors"
+                        >
+                          <i className="bi bi-box-arrow-up-right"></i> Live Demo
+                        </a>
+                      ) : (
+                        <span className="flex items-center gap-2 border border-white/10 text-white/30 text-sm px-4 py-2 rounded-lg">
+                          <i className="bi bi-box-arrow-up-right"></i> No Link
+                        </span>
+                      )}
+                      {selectedProject.codeLink ? (
+                        <a
+                          href={selectedProject.codeLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 border border-white/10 text-white/70 text-sm px-4 py-2 rounded-lg hover:border-white/30 transition-colors"
+                        >
+                          <i className="bi bi-github"></i> Code
+                        </a>
+                      ) : (
+                        <span className="flex items-center gap-2 border border-white/10 text-white/30 text-sm px-4 py-2 rounded-lg">
+                          <i className="bi bi-github"></i> No Link
+                        </span>
+                      )}
+                    </div>
+
+                    <div className="mt-6">
+                      <p className="text-white/60 text-sm flex items-center gap-2 mb-3">
+                        <i className="bi bi-code-slash"></i> Technologies Used
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedProject.technologies.map((tech) => (
+                          <span
+                            key={tech}
+                            className="border border-white/10 text-white/70 text-xs px-3 py-1.5 rounded-full"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-4">
+                    <div className="aspect-video bg-black/40 rounded-xl overflow-hidden flex items-center justify-center text-white/30 text-sm">
+                      {selectedProject.image ? (
+                        <img
+                          src={selectedProject.image}
+                          alt={selectedProject.title}
+                          className="w-full h-full object-cover"
+                        />
+                      ) : (
+                        "Preview"
+                      )}
+                    </div>
+
+                    <div className="border border-white/10 rounded-xl p-5">
+                      <p className="text-white font-semibold text-sm flex items-center gap-2 mb-3">
+                        ⚙ Key Features
+                      </p>
+                      <ul className="flex flex-col gap-2">
+                        {selectedProject.keyFeatures.map((feature, i) => (
+                          <li
+                            key={i}
+                            className="text-white/60 text-sm flex items-start gap-2"
+                          >
+                            <span className="text-white/40">•</span> {feature}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
       </AnimatePresence>
     </section>
   );
