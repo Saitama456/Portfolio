@@ -6,14 +6,14 @@ const socials = [
     name: "LinkedIn",
     handle: "@linkedin",
     icon: "bi-linkedin",
-    url: "https://linkedin.com/in/tuusuario",
+    url: "https://www.linkedin.com/in/andr%C3%A9s-su%C3%A1rez-2046a0359/",
     wide: true,
   },
   {
     name: "Instagram",
     handle: "@instagram",
     icon: "bi-instagram",
-    url: "https://instagram.com/tuusuario",
+    url: "https://www.instagram.com/0saitamaa0_?stkn=MTNqMXJieXl5dzF1bg==",
   },
   {
     name: "Discord",
@@ -25,13 +25,13 @@ const socials = [
     name: "Github",
     handle: "@github",
     icon: "bi-github",
-    url: "https://github.com/tuusuario",
+    url: "https://github.com/Saitama456",
   },
   {
     name: "TikTok",
     handle: "@tiktok",
     icon: "bi-tiktok",
-    url: "https://tiktok.com/@tuusuario",
+    url: "https://www.tiktok.com/@epc_azn33?_r=1&_t=ZS-99q9bL6owY1",
   },
 ];
 
