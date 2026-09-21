@@ -49,12 +49,15 @@ function Contact() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí conectaremos EmailJS más adelante
+      const numero = "573206596769"; 
+      const texto = `Hola, soy ${form.name} (${form.email}).%0A%0A${form.message}`;
+      window.open(`https://wa.me/${numero}?text=${encodeURIComponent(texto)}`, "_blank");
+      setForm({ name: "", email: "", message: "" });
   };
 
   const handleCommentSubmit = (e) => {
     e.preventDefault();
-    // Aquí conectaremos el guardado de comentarios más adelante
+    
   };
 
   return (
